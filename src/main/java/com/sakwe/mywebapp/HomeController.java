@@ -1,8 +1,8 @@
 package com.sakwe.mywebapp;
 
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -10,11 +10,18 @@ import jakarta.servlet.http.HttpServletRequest;
 public class HomeController {
 
     @RequestMapping("home")
-    public String home(HttpServletRequest req)
+    public ModelAndView home(HttpServletRequest req)
     {
-        String name =  req.getParameter("name");
-         System.out.println("Hi " + name);
-         req.setAttribute("name", name);
-        return "home";
+        ModelAndView mv = new ModelAndView();
+
+        Alient alient = new Alient();
+        alient.setAid(Integer.parseInt(req.getParameter("aid")));
+        alient.setAname(req.getParameter("aname"));
+        alient.setLang(req.getParameter("lang"));
+
+        mv.addObject("obj",alient);
+
+        mv.setViewName("home");
+        return mv;
     }
 }

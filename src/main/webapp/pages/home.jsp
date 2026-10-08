@@ -7,7 +7,9 @@
     <title>Title</title>
 </head>
 <body>
-    <h1>Welcome ${name}</h1>
+    <h1>Welcome ${obj.aname} </h1>
+    <p>AID: ${obj.aid}</p>
+    <p>Language: ${obj.lang}</p>
 </body>
 </html>
 
